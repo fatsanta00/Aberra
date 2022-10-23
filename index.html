@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="utilities.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+  <title>Aberra</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="container flex navb">
+      <img src="img2/logo2.1.png" alt="">
+      <h1 class="logo">
+        Aberra Mining Associates.
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="sign-up.html">Sign-Up</a></li>
+          <li><a href="login.html">Log-in</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Showcase -->
+  <section class="showcase">
+    <div class="container grid">
+      <div class="showcase-text">
+        <h1>#1 Miner </h1>
+        <p>
+          Aberra is a special online platform that allows you to save crypto-currencies and achieve growth within a
+          specific period of time without any hidden fees. <br> This platform allows you to save and ivest any type and
+          amount of crypto-currency and choose a time period in which you'd achieve the growth of your cryptocurrency
+          and make a withdrawal once the time period of you choosing elapses.
+        </p>
+        <a href="about.html" class="btn btn-outline">Read More</a>
+      </div>
+
+      <div class="showcase-form card">
+        <h2>Subscribe!</h2>
+        <form>
+          <div class="form-control">
+            <input type="text" name="name" placeholder="Name" required />
+          </div>
+          <div class="form-control">
+          </div>
+          <div class="form-control">
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <input type="submit" value="Subscribe" class="btn btn-primary" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="">
+    <div class="container stats">
+      <h3 class="md text-center my-2">
+        Cryptocurrency Chart
+      </h3>
+
+
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <div class="tradingview-widget-copyright">
+          <a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener"
+            target="_blank"><span class="blue-text"></span></a>
+
+        </div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"
+          async>
+            {
+              "width": "100%",
+                "height": "400",
+                  "defaultColumn": "overview",
+                    "screener_type": "crypto_mkt",
+                      "displayCurrency": "USD",
+                        "colorTheme": "black",
+                          "locale": "en"
+            }
+          </script>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cli -->
+  <!-- <section class="cli">
+    <div class="container grid">
+      <img src="images/cli.png" alt="" />
+      <div class="card">
+        <h3>Easy to use, cross platform CLI</h3>
+      </div>
+      <div class="card">
+        <h3>Deploy in seconds</h3>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Cloud -->
+  <section class="cloud bg-primary my-2 py-2">
+    <div class="container grid">
+      <div class="text-center">
+        <h2 class="lg">Mining Plans</h2>
+        <p class="lead my-1">
+          This are our well-designed mining plans to meet your various mining budgets varing from our silver plan with
+          the minimum investment of 30 days to our diamond plan with the minimum of 90 days. I'm sure you'll find a plan
+          that is well suited for you.
+        </p>
+        <div class="container flex text-center mining">
+          <div class="card" data-aos="flip-left" data-aos-duration="2000">
+            <div class="gd">
+              <p style="color: black; margin: 0 0 0 0; font-size: 1.5rem">
+                Silver Plan
+              </p>
+            </div>
+            <div class="gd2">
+              <h3 style="color: gray">$100-$20000</h3>
+              <p style="color: black"><strong>30 Days</strong></p>
+              <p style="color: black">plus no bonus</p>
+              <a href="sign-up.html"><button class="btn btn-primary" type="button" name="button">
+                  Get started
+                </button></a>
+            </div>
+          </div>
+          <div class="card" data-aos="flip-up" data-aos-duration="2000">
+            <div class="md">
+              <p style="color: black; margin: 0 0 0 0; font-size: 1.5rem">
+                Gold Plan
+              </p>
+            </div>
+            <div class="md2">
+              <h3 style="color: gray">$100-$20000</h3>
+              <p style="color: black"><strong>60 Days</strong></p>
+              <p style="color: black">plus monthly bonus</p>
+              <a href="sign-up.html"><button class="btn btn-primary" type="button" name="button">
+                  Get started
+                </button></a>
+            </div>
+          </div>
+          <div class="card" data-aos="flip-right" data-aos-duration="2000">
+            <div class="ppr">
+              <p style="color: black; margin: 0 0 0 0; font-size: 1.5rem">
+                Diamond Plan
+              </p>
+            </div>
+            <div class="md2">
+              <h3 style="color: gray">$100-$20000</h3>
+              <p style="color: black"><strong>90 Days</strong></p>
+              <p style="color: black">plus weekly bonus</p>
+              <a href="sign-up.html"><button class="btn btn-primary" type="button" name="button">
+                  Get started
+                </button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="languages">
+    <h2 class="md text-center my-2">Supported Cryptocurrencies</h2>
+    <div class="container flex">
+      <a href="buyCrypto.html">
+        <div class="card">
+          <h4>Bitcoin</h4>
+          <img src="img2/btcic .png" alt="" />
+        </div>
+      </a>
+      <a href="buyCrypto.html">
+        <div class="card">
+          <h4>Ethereum</h4>
+          <img src="img2/ethic.png" alt="" />
+        </div>
+      </a>
+      <a href="buyCrypto.html">
+        <div class="card">
+          <h4>Litecoin</h4>
+          <img src="img2/ltcic.png" alt="" />
+        </div>
+      </a>
+      <a href="buyCrypto.html">
+        <div class="card">
+          <h4>BNB</h4>
+          <img src="img2/bnbic.png" alt="" />
+        </div>
+      </a>
+      <a href="buyCrypto.html">
+        <div class="card">
+          <h4>Dogecoin</h4>
+          <img src="img2/dogeic.png" alt="" />
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer bg-dark py-5">
+    <div class="container grid grid-3">
+      <div>
+        <h1>Aberra</h1>
+        <p>Copyright &copy; 2020</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="about.html">about</a></li>
+        </ul>
+      </nav>
+      <div class="social">
+        <a href="https://google.mail.com/"><i class="fab fa-email fa-2x"></i></a>
+        <a href="https://web.facebook.com/bassthoven00/"><i class="fab fa-facebook fa-2x"></i></a>
+        <a href="https://web.whatsapp.com"><i class="fab fa-whatsapp fa-2x"></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter fa-2x"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

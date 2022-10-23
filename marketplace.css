@@ -1,0 +1,481 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #3b0931;
+  padding-bottom: 20px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+}
+/* navbar */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  grid-area: nav;
+  background-color: #3b0931;
+  padding: 16px 10px;
+  box-shadow: 10px 0 30px #100101;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navlogo {
+  width: 50px;
+}
+.hamburger {
+  display: block;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background-color: #1c0417;
+  border-radius: 6px;
+  z-index: 1;
+  transform-origin: 0 0;
+  transition: 0.4s;
+}
+.hamburger:hover span:nth-child(2) {
+  transform: translateX(10px);
+  background-color: yellow;
+}
+
+.hamburger.is-active span:nth-child(1) {
+  transform: translate(0px, -2px) rotate(45deg);
+}
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(15px);
+}
+.hamburger.is-active span:nth-child(3) {
+  transform: translate(-3px, 3px) rotate(-45deg);
+}
+.hamburger.is-active:hover span {
+  background-color: yellow;
+}
+.nav-menu {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: flex-end;
+  margin: 0 -16px;
+  left: -100%;
+}
+.nav-menu a {
+  color: white;
+  margin: 0 16px;
+  font-weight: 100;
+  text-decoration: none;
+  transition: 0.4s;
+  padding: 16px 16px;
+  border-radius: 99px;
+}
+.nav-menu a.is-active,
+.nav-menu a:hover {
+  background-color: yellow;
+  color: black;
+}
+.navmenuic {
+  display: none;
+  position: relative;
+  top: 5px;
+  width: 35px;
+}
+.nav-menu #nvic.is-active,
+.nav-menu #nvic:hover {
+  background-color: #3b0931;
+}
+.reward-icon {
+  width: 25px;
+}
+
+.user-icon {
+  width: 25px;
+}
+
+.bell-icon {
+  width: 25px;
+}
+
+.sub-menu-1 {
+  display: none;
+}
+.dropdown:hover .sub-menu-1 {
+  display: block;
+  position: absolute;
+  background-color: #10010149;
+  margin-top: 10px;
+}
+.fdbtn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin: 0 16px;
+  font-size: 16px;
+  font-weight: 100;
+  text-decoration: none;
+  transition: 0.4s;
+  padding: 16px 16px;
+  border-radius: 99px;
+}
+#nvic {
+  background-color: transparent;
+  border: none;
+  margin: 0 15px;
+}
+.fdbtn:hover {
+  background-color: yellow;
+  color: black;
+}
+.sub-menu-1 ul {
+  list-style: none;
+}
+.sub-menu-2 {
+  display: none;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 5px;
+  border-width: 0.5px;
+  padding: 0 15px;
+  height: 200px;
+}
+.sub-menu-2 ul {
+  list-style: none;
+  margin-top: 15px;
+}
+.sub-menu-2 ul li {
+  color: white;
+}
+.dropdown:hover .sub-menu-2 {
+  display: block;
+  position: absolute;
+  background-color: #10010149;
+  margin-top: 10px;
+  right: 110px;
+  width: 250px;
+}
+.sub-menu-3 {
+  display: none;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 5px;
+  border-width: 0.5px;
+  padding: 0 15px;
+  height: 200px;
+}
+.sub-menu-3 ul {
+  list-style: none;
+  margin-top: 15px;
+}
+.sub-menu-3 ul li {
+  color: white;
+}
+.dropdown:hover .sub-menu-3 {
+  display: block;
+  position: absolute;
+  background-color: #10010149;
+  margin-top: 5px;
+  right: 0px;
+  width: 250px;
+}
+
+.sub-menu-4 {
+  display: none;
+  border-style: solid;
+  border-color: gray;
+  border-radius: 5px;
+  border-width: 0.5px;
+  padding: 0 0px;
+  height: 215px;
+}
+.sub-menu-4 ul {
+  list-style: none;
+  margin-top: 15px;
+}
+.sub-menu-4 ul li {
+  color: white;
+}
+.dropdown:hover .sub-menu-4 {
+  display: block;
+  position: absolute;
+  background-color: #10010149;
+  margin-top: 5px;
+  right: 0px;
+  width: 200px;
+}
+.menu-4d1 {
+  display: flex;
+  align-items: center;
+}
+.transicon {
+  width: 20px;
+  height: 20px;
+}
+.menu-4d2 {
+  display: flex;
+  align-items: center;
+}
+.logouticon {
+  width: 20px;
+  height: 20px;
+  margin-left: 25px;
+}
+.menu-4d3 {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+.menu-4d4 {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+}
+.sic {
+  width: 20px;
+  height: 20px;
+  padding: 0 5px;
+}
+#sica,
+#sica:hover {
+  margin: 0;
+  padding: 0;
+}
+#sica.is-active,
+#sica:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.bodygrid {
+  padding: 0 5%;
+  margin-top: 15%;
+  margin-bottom: 50px;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 50px;
+  grid-template-areas:
+    "nft1 nft2 nft3 nft4"
+    "nft5 nft6 nft7 nft8"
+    "nft9 nft10 nft11 nft12"
+    "nft13 nft14 nft15 nft16"
+    "nft17 nft18 nft19 nft20";
+}
+.nft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  border-radius: 20px;
+  background-color: #431139;
+  box-shadow: 10px 10px 10px -5px #310929c7;
+  padding: 2%;
+}
+.nftimg {
+  margin: 3% 0% 3% 0%;
+  width: 80%;
+  filter: opacity(70%);
+}
+.nftimg:hover {
+  filter: opacity(100%);
+}
+.nfttxt {
+  display: flex;
+  color: white;
+}
+.nftspn2 {
+  color: greenyellow;
+  font-size: 1rem;
+}
+.nftic {
+  margin: 0;
+  width: 100%;
+  height: 90%;
+}
+.nftbtn {
+  width: 20%;
+  height: 50px;
+  background-color: transparent;
+  border-style: none;
+}
+.nfth4 {
+  font-size: 14px;
+  font-weight: 600;
+  width: 40%;
+}
+.nfth2 {
+  text-align: center;
+  font-weight: 100;
+}
+.nft1 {
+  grid-area: nft1;
+}
+.nft2 {
+  grid-area: nft2;
+}
+.nft3 {
+  grid-area: nft3;
+}
+.nft4 {
+  grid-area: nft4;
+}
+/* .nft5 {
+  grid-area: nft5;
+}
+.nft6 {
+  grid-area: nft6;
+}
+.nft7 {
+  grid-area: nft7;
+}
+.nft8 {
+  grid-area: nft8;
+} */
+@media (min-width: 950px) {
+  .hamburger {
+    display: none;
+  }
+  .nav-menu {
+    display: flex;
+  }
+}
+@media (max-width: 950px) {
+  .nav-menu {
+    top: 85px;
+    position: fixed;
+    flex-direction: column;
+    background-color: #290522;
+    text-align: center;
+    transition: 0.3s;
+    width: 30%;
+    margin: 0;
+  }
+  .navmenuic {
+    display: block;
+    position: relative;
+    top: 5px;
+    width: 35px;
+    margin-bottom: 10px;
+  }
+  .nav-menu a {
+    font-size: small;
+    margin: 0px 0;
+    border-radius: 25px;
+    padding: 12px 12px;
+  }
+  .nav-menu.active {
+    left: 0;
+    padding-bottom: 150px;
+  }
+  #nvic {
+    display: none;
+  }
+  .fdbtn {
+    font-size: small;
+    margin: 0px 0;
+    border-radius: 25px;
+    padding: 12px 12px;
+    width: 100%;
+  }
+  .dropdown:hover .sub-menu-1 {
+    display: block;
+    position: relative;
+  }
+}
+@media (min-width: 780px) and (max-width: 1200px) {
+  .bodygrid {
+    padding: 0 5%;
+    margin-top: 15%;
+    margin-bottom: 50px;
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 50px;
+    grid-template-areas:
+      "nft1 nft2"
+      "nft3 nft4"
+      "nft5 nft6"
+      "nft7 nft8"
+      "nft9 nft10"
+      "nft11 nft12"
+      "nft13 nft14"
+      "nft15 nft16"
+      "nft17 nft18 "
+      "nft19 nft20";
+  }
+  .nftic {
+    width: 100%;
+    height: 100%;
+  }
+  .nftbtn {
+    margin-left: 0;
+  }
+  .nfth2 {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 780px) {
+  .bodygrid {
+    margin: 0 5%;
+    margin-top: 30%;
+    margin-bottom: 50px;
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 50px;
+    grid-template-areas:
+      "nft1"
+      "nft2"
+      "nft3"
+      "nft4"
+      "nft5"
+      "nft6"
+      "nft7"
+      "nft8"
+      "nft9"
+      "nft10"
+      "nft11"
+      "nft12"
+      "nft13"
+      "nft14"
+      "nft15"
+      "nft16"
+      "nft17"
+      "nft18 "
+      "nft19"
+      "nft20";
+  }
+  .nftic {
+    width: 100%;
+    height: 100%;
+  }
+  .nftbtn {
+    margin-left: 0;
+  }
+  .nfth2 {
+    padding: 0 10px;
+  }
+  .nfttxt {
+    display: flex;
+    color: white;
+    padding: 0 0;
+  }
+}
