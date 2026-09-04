@@ -1,0 +1,79 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  username     String        @unique
+  email        String        @unique
+  passwordHash String
+  balance      Float         @default(0.0)
+  minedBalance Float         @default(0.0)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  isAdmin           Boolean             @default(false)
+  transactions      Transaction[]
+  stakingPlans      StakingPlan[]
+  nfts              NFT[]
+  withdrawalRequests WithdrawalRequest[]
+  passwordResetTokens PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Transaction {
+  id                  String             @id @default(uuid())
+  userId              String
+  user                User               @relation(fields: [userId], references: [id])
+  type                String             // DEPOSIT, WITHDRAWAL, TRANSFER, STAKE
+  amount              Float
+  status              String             // PENDING, COMPLETED, FAILED
+  withdrawalRequestId String?            // Links this Transaction to its WithdrawalRequest
+  withdrawalRequest   WithdrawalRequest? @relation(fields: [withdrawalRequestId], references: [id])
+  createdAt           DateTime           @default(now())
+}
+
+model StakingPlan {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  planType  String   // Silver, Gold, Diamond
+  amount    Float
+  startDate DateTime @default(now())
+  endDate   DateTime
+  status    String   // ACTIVE, COMPLETED
+}
+
+model NFT {
+  id       String  @id @default(uuid())
+  name     String
+  imageUrl String
+  price    Float
+  ownerId  String?
+  owner    User?   @relation(fields: [ownerId], references: [id])
+}
+
+model WithdrawalRequest {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  crypto        String        // BTC, ETH, USDT, BSC
+  walletAddress String
+  amount        Float
+  status        String        @default("PENDING") // PENDING, APPROVED, COMPLETED, REJECTED
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  transactions  Transaction[] // All Transaction records linked to this withdrawal
+}
