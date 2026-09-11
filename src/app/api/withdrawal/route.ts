@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 const VALID_CRYPTOS = ["BTC", "ETH", "USDT", "BSC"];
 
@@ -45,7 +46,7 @@ export async function POST(req: Request) {
     }
 
     // Atomic: deduct balance, create WithdrawalRequest, then create the linked Transaction
-    const withdrawalRequest = await prisma.$transaction(async (tx) => {
+    const withdrawalRequest = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.user.update({
         where: { id: userId },
         data: { balance: { decrement: parsedAmount } },

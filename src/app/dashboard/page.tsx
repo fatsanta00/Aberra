@@ -4,6 +4,29 @@ import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 
+interface TransactionWithWithdrawal {
+  id: string;
+  userId: string;
+  type: string;
+  amount: number;
+  status: string;
+  withdrawalRequestId: string | null;
+  withdrawalRequest: { id: string; status: string } | null;
+  createdAt: Date;
+}
+
+interface UserWithRelations {
+  id: string;
+  username: string;
+  email: string;
+  balance: number;
+  minedBalance: number;
+  isAdmin: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  transactions: TransactionWithWithdrawal[];
+  withdrawalRequests: { id: string; status: string; createdAt: Date }[];
+}
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect("/login");
@@ -18,7 +41,7 @@ export default async function Dashboard() {
       },
       withdrawalRequests: { orderBy: { createdAt: "desc" }, take: 3 },
     },
-  });
+  }) as UserWithRelations | null;
 
   if (!user) redirect("/login");
 

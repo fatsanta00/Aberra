@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 // Map withdrawal status to corresponding Transaction status
 const STATUS_MAP: Record<string, string> = {
@@ -51,7 +52,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     const transactionStatus = STATUS_MAP[status];
 
     // Update both records atomically — this is the single source of truth update
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       // 1. Update the WithdrawalRequest status
       await tx.withdrawalRequest.update({
         where: { id },

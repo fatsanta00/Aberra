@@ -5,6 +5,17 @@ import prisma from "@/lib/prisma";
 import Link from "next/link";
 import WithdrawalActionButtons from "@/components/WithdrawalActionButtons";
 
+interface WithdrawalWithUser {
+  id: string;
+  userId: string;
+  crypto: string;
+  walletAddress: string;
+  amount: number;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+  user: { username: string; email: string; balance: number };
+}
 export default async function AdminWithdrawals() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect("/login");
@@ -16,7 +27,7 @@ export default async function AdminWithdrawals() {
 
   if (!user?.isAdmin) redirect("/dashboard");
 
-  const withdrawals = await prisma.withdrawalRequest.findMany({
+  const withdrawals: WithdrawalWithUser[] = await prisma.withdrawalRequest.findMany({
     include: {
       user: { select: { username: true, email: true, balance: true } },
     },

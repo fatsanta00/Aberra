@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 const PLANS = {
   silver: { min: 100, days: 30 },
@@ -44,7 +45,7 @@ export async function POST(req: Request) {
     const endDate = new Date();
     endDate.setDate(endDate.getDate() + selectedPlan.days);
 
-    const stakingPlan = await prisma.$transaction(async (tx) => {
+    const stakingPlan = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       await tx.user.update({
         where: { id: userId },
         data: { balance: { decrement: parsedAmount } },

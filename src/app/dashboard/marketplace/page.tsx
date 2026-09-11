@@ -4,12 +4,30 @@ import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 
+interface NFTWithOwner {
+  id: string;
+  name: string;
+  imageUrl: string;
+  price: number;
+  ownerId: string | null;
+  owner: { username: string } | null;
+}
+
+interface DisplayNft {
+  id: string;
+  name: string;
+  ownerName: string;
+  price: number;
+  percent: string;
+  img: string;
+  positive: boolean;
+}
 export default async function Marketplace() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect("/login");
 
   // Fetch all NFTs from DB with owner info
-  const nfts = await prisma.nFT.findMany({
+  const nfts: NFTWithOwner[] = await prisma.nFT.findMany({
     include: { owner: { select: { username: true } } },
     orderBy: { price: "desc" },
   });
@@ -27,7 +45,7 @@ export default async function Marketplace() {
     { id: "s9", name: "UnrealApe #222", ownerName: "Sara", price: 900, percent: "+5%", img: "/nfts/unnamed (4).jpg", positive: true },
   ];
 
-  const displayNfts = nfts.length > 0
+  const displayNfts: DisplayNft[] = nfts.length > 0
     ? nfts.map((n) => ({
         id: n.id,
         name: n.name,
