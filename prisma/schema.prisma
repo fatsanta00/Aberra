@@ -20,6 +20,7 @@ model User {
   stakingPlans      StakingPlan[]
   nfts              NFT[]
   withdrawalRequests WithdrawalRequest[]
+  depositRequests   DepositRequest[]
   passwordResetTokens PasswordResetToken[]
 }
 
@@ -36,12 +37,28 @@ model Transaction {
   id                  String             @id @default(uuid())
   userId              String
   user                User               @relation(fields: [userId], references: [id])
-  type                String             // DEPOSIT, WITHDRAWAL, TRANSFER, STAKE
+  type                String             // DEPOSIT, WITHDRAWAL, TRANSFER, STAKING, etc.
   amount              Float
   status              String             // PENDING, COMPLETED, FAILED
   withdrawalRequestId String?            // Links this Transaction to its WithdrawalRequest
   withdrawalRequest   WithdrawalRequest? @relation(fields: [withdrawalRequestId], references: [id])
+  depositRequestId    String?            // Links this Transaction to its DepositRequest
+  depositRequest      DepositRequest?    @relation(fields: [depositRequestId], references: [id])
   createdAt           DateTime           @default(now())
+}
+
+model DepositRequest {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  crypto        String        // BTC, ETH, USDT, SOL, etc.
+  network       String
+  amount        Float
+  txHash        String        @unique
+  status        String        @default("PENDING") // PENDING, APPROVED, REJECTED
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  transactions  Transaction[] // All Transaction records linked to this deposit
 }
 
 model StakingPlan {

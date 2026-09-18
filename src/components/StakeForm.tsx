@@ -9,8 +9,9 @@ interface StakeFormProps {
 const CRYPTOS = [
   { id: "BTC", label: "Bitcoin", icon: "/img2/btcic .png" },
   { id: "ETH", label: "Ethereum", icon: "/img2/ethic.png" },
-  { id: "LTC", label: "Litecoin", icon: "/img2/ltcic.png" },
   { id: "BNB", label: "Binance", icon: "/img2/bnbic.png" },
+  { id: "USDT", label: "Tether", icon: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029" },
+  { id: "SOL", label: "Solana", icon: "https://cryptologos.cc/logos/solana-sol-logo.svg?v=029" },
 ];
 
 const PLANS = [

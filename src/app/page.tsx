@@ -127,15 +127,21 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center text-white mb-10">Supported Cryptocurrencies</h2>
           <div className="flex flex-wrap justify-center gap-6 md:gap-12">
             {[
-              { name: "Bitcoin", icon: "btcic .png" },
-              { name: "Ethereum", icon: "ethic.png" },
-              { name: "Litecoin", icon: "ltcic.png" },
-              { name: "BNB", icon: "bnbic.png" },
-              { name: "Dogecoin", icon: "dogeic.png" },
+              { name: "Bitcoin", icon: "/img2/btcic .png" },
+              { name: "Ethereum", icon: "/img2/ethic.png" },
+              { name: "Litecoin", icon: "/img2/ltcic.png" },
+              { name: "BNB", icon: "/img2/bnbic.png" },
+              { name: "Dogecoin", icon: "/img2/dogeic.png" },
+              { name: "Tether (USDT)", icon: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029", isExternal: true },
+              { name: "Solana (SOL)", icon: "https://cryptologos.cc/logos/solana-sol-logo.svg?v=029", isExternal: true },
             ].map((coin) => (
               <Link href="/dashboard/deposit" key={coin.name} className="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition group">
                 <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center p-4 border border-white/20 group-hover:border-[#a855f7] transition">
-                  <Image src={`/img2/${coin.icon}`} alt={coin.name} width={60} height={60} className="object-contain" />
+                  {coin.isExternal ? (
+                    <img src={coin.icon} alt={coin.name} className="w-[60px] h-[60px] object-contain" />
+                  ) : (
+                    <Image src={coin.icon} alt={coin.name} width={60} height={60} className="object-contain" />
+                  )}
                 </div>
                 <h4 className="text-white font-medium">{coin.name}</h4>
               </Link>

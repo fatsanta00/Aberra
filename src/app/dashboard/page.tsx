@@ -15,6 +15,8 @@ interface TransactionWithWithdrawal {
   status: string;
   withdrawalRequestId: string | null;
   withdrawalRequest: { id: string; status: string } | null;
+  depositRequestId: string | null;
+  depositRequest: { id: string; crypto: string; network: string; txHash: string; status: string } | null;
   createdAt: Date;
 }
 
@@ -44,7 +46,7 @@ export default async function Dashboard() {
       transactions: { 
         orderBy: { createdAt: "desc" }, 
         take: 5,
-        include: { withdrawalRequest: true }
+        include: { withdrawalRequest: true, depositRequest: true }
       },
       withdrawalRequests: { orderBy: { createdAt: "desc" }, take: 3 },
     },
@@ -170,11 +172,21 @@ export default async function Dashboard() {
               <tbody>
                 {user.transactions.map((tx) => (
                   <tr key={tx.id} className="border-b border-white/5 hover:bg-white/5 transition">
-                    <td className="px-5 py-3 text-white font-medium">{tx.type}</td>
+                    <td className="px-5 py-3 text-white">
+                      <div className="font-medium">{tx.type}</div>
+                      {tx.depositRequest && (
+                        <div className="text-xs text-gray-500 mt-1 flex flex-col">
+                          <span>{tx.depositRequest.crypto} ({tx.depositRequest.network})</span>
+                          <span title={tx.depositRequest.txHash} className="truncate max-w-[120px] sm:max-w-[150px]">
+                            Tx: {tx.depositRequest.txHash.substring(0, 10)}...
+                          </span>
+                        </div>
+                      )}
+                    </td>
                     <td className="px-5 py-3 text-white">${tx.amount.toFixed(2)}</td>
                     <td className="px-5 py-3">
                       {(() => {
-                        const displayStatus = tx.withdrawalRequest ? tx.withdrawalRequest.status : tx.status;
+                        const displayStatus = tx.withdrawalRequest ? tx.withdrawalRequest.status : tx.depositRequest ? tx.depositRequest.status : tx.status;
                         return (
                           <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
                             displayStatus === "COMPLETED" || displayStatus === "APPROVED" ? "bg-green-500/20 text-green-300" :
