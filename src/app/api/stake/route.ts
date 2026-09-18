@@ -64,9 +64,9 @@ export async function POST(req: Request) {
       await tx.transaction.create({
         data: {
           userId,
-          type: "STAKE",
+          type: "STAKING",
           amount: parsedAmount,
-          status: "COMPLETED", // the stake creation is complete
+          status: "ACTIVE", // As requested for Stake Created
         },
       });
 

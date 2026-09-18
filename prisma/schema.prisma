@@ -45,14 +45,15 @@ model Transaction {
 }
 
 model StakingPlan {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  planType  String   // Silver, Gold, Diamond
-  amount    Float
-  startDate DateTime @default(now())
-  endDate   DateTime
-  status    String   // ACTIVE, COMPLETED
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  planType        String   // Silver, Gold, Diamond
+  amount          Float
+  creditedRewards Float    @default(0.0)
+  startDate       DateTime @default(now())
+  endDate         DateTime
+  status          String   // ACTIVE, COMPLETED
 }
 
 model NFT {
