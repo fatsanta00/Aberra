@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const WALLETS = [
-  { id: "BTC", name: "Bitcoin", network: "BTC", address: "bc1qtjr4wf2pw4jl0mychvun5h6f6qu3d66n35fe38", icon: "/img2/btcic .png", color: "border-orange-500/50 hover:border-orange-500" },
-  { id: "ETH", name: "Ethereum", network: "ERC20", address: "0x96533aa9e98f02F18214c7E271F81E17f3A8A800", icon: "/img2/ethic.png", color: "border-blue-500/50 hover:border-blue-500" },
-  { id: "BNB", name: "BNB Smart Chain", network: "BEP20", address: "0x96533aa9e98f02F18214c7E271F81E17f3A8A800", icon: "/img2/bnbic.png", color: "border-yellow-500/50 hover:border-yellow-500" },
-  { id: "USDT", name: "USDT", network: "ERC20", address: "0x96533aa9e98f02F18214c7E271F81E17f3A8A800", icon: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029", color: "border-teal-500/50 hover:border-teal-500" }, 
-  { id: "SOL", name: "Solana", network: "Solana", address: "GBb2sBp534w7FsZAmJaZMzm2yZyc22HZ3zyqqU4eeDjr", icon: "https://cryptologos.cc/logos/solana-sol-logo.svg?v=029", color: "border-purple-500/50 hover:border-purple-500" },
+  { id: "BTC", name: "Bitcoin", network: "BTC", address: "bc1qqrs3ey5lp7x9uchux4q7lmykdugejgne9hynmh", icon: "/img2/btcic .png", color: "border-orange-500/50 hover:border-orange-500" },
+  { id: "ETH", name: "Ethereum", network: "ERC20", address: "0x8354035899821b064A052732690A92bD76086648", icon: "/img2/ethic.png", color: "border-blue-500/50 hover:border-blue-500" },
+  { id: "BNB", name: "BNB Smart Chain", network: "BEP20", address: "0x8354035899821b064A052732690A92bD76086648", icon: "/img2/bnbic.png", color: "border-yellow-500/50 hover:border-yellow-500" },
+  { id: "USDT", name: "USDT", network: "ERC20", address: "0x8354035899821b064A052732690A92bD76086648", icon: "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=029", color: "border-teal-500/50 hover:border-teal-500" }, 
+  { id: "SOL", name: "Solana", network: "Solana", address: "ETcpDDmRNLLQECt4kerHan19LjVwh9nvNQJdyR15eSKB", icon: "https://cryptologos.cc/logos/solana-sol-logo.svg?v=029", color: "border-purple-500/50 hover:border-purple-500" },
 ];
 
 export default function Deposit() {
